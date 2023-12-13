@@ -1,0 +1,41 @@
+/* static/custom.css */
+
+body {
+    font-family: Arial, sans-serif; /* Cambia la fuente según tus preferencias */
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.btn-group {
+    margin-bottom: 20px;
+}
+
+#resultado-container {
+    margin-top: 20px;
+}
+
+/* Estilo para la barra de navegación */
+.navbar {
+    margin-bottom: 20px; /* Ajusta el espacio entre la barra de navegación y el contenido principal */
+}
+
+.navbar-brand {
+    font-size: 24px;
+}
+
+.navbar-nav {
+    display: flex; /* Hace que las opciones de la barra de navegación estén en línea */
+}
+
+.navbar-nav .nav-link {
+    font-size: 18px;
+    color: #333; /* Color del texto de la barra de navegación */
+    margin-right: 10px; /* Espaciado entre las opciones */
+}
+
+.navbar-toggler-icon {
+    background-color: #333; /* Color del ícono del botón de la barra de navegación en dispositivos pequeños */
+}
