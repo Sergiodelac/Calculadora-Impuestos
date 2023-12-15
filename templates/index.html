@@ -6,115 +6,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de IVA</title>
-    <!-- Incluye Bootstrap CSS -->
-<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy/J6ezy4h6U" crossorigin="anonymous">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='custom.css') }}">
 </head>
 <body>
-    <body>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">IVA</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Honorarios</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Comisiones</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Desperdicios</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Fletes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Renta</a>
-                        </li>
-                    </ul>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link" href="{{ url_for('calculadora_iva') }}"> IVA</a>
+                    <a class="nav-link" href="{{ url_for('calculadora_honorarios') }}">Honorarios</a>
+                    <a class="nav-link" href="{{ url_for('calculadora_comisiones') }}">Comisiones</a>
+                    <a class="nav-link" href="{{ url_for('calculadora_desperdicios') }}">Desperdicios</a>
+                    <a class="nav-link" href="{{ url_for('calculadora_fletes') }}">Fletes</a>
+                    <a class="nav-link" href="{{ url_for('calculadora_renta') }}">Renta</a>
+ <!-- Agrega los enlaces para las demás calculadoras según sea necesario -->
+
+                    <!-- Agrega otros enlaces según sea necesario -->
                 </div>
             </div>
-        </nav>
+        </div>
+    </nav>
+
+    <!-- Contenido de la página principal -->
     <div class="container mt-5">
-        <h1 class="mb-4">Calculadora de IVA</h1>
-
-        <!-- Sección de ayuda -->
-        <div class="alert alert-info" role="alert">
-            <h4 class="alert-heading">Modo de uso</h4>
-            <p>
-                Bienvenido a la Calculadora de IVA. Para utilizarla, sigue estos pasos:
-            </p>
-            <ul>
-                <li>Selecciona la opción (Base, Total, IVA) que deseas calcular.</li>
-                <li>Ingresa el valor correspondiente en el campo proporcionado.</li>
-                <li>Haz clic en el botón "Calcular" para obtener el resultado.</li>
-            </ul>
-            <hr>
-            <p class="mb-0">¡Esperamos que encuentres útil esta herramienta!</p>
-        </div>
-
-        <!-- Formulario de la calculadora -->
-        <form action="/" method="post" id="calculator-form">
-            <div class="form-group">
-                <label for="opcion">Seleccione la opción:</label>
-                <div class="btn-group">
-                    <button type="button" onclick="selectOption('base')" id="btn-base" class="btn btn-secondary">Base</button>
-                    <button type="button" onclick="selectOption('total')" id="btn-total" class="btn btn-secondary">Total</button>
-                    <button type="button" onclick="selectOption('iva')" id="btn-iva" class="btn btn-secondary">IVA</button>
-                </div>
-            </div>
-
-            <input type="hidden" name="opcion" id="opcion" required>
-
-            <div class="form-group">
-                <label for="valor">Valor:</label>
-                <input type="text" name="valor" id="valor" class="form-control" required>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Calcular</button>
-        </form>
-
-        <!-- Contenedor del resultado -->
-        <div id="resultado-container" class="mt-4 p-3 border bg-light">
-            {% if resultado %}
-                <h2>Resultado:</h2>
-                <p id="resultado-content">{{ resultado }}</p>
-            {% else %}
-                <h2 id="resultado-placeholder" style="display: none;">Resultado:</h2>
-                <p id="resultado-content" style="display: none;"></p>
-            {% endif %}
-        </div>
+        <h1 class="mb-4">Bienvenido a la Calculadora de IVA</h1>
+        <p>Selecciona una opción en la barra de navegación para comenzar.</p>
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7NvU8pT7RABl+d3P9EZtLv5Vvb/efM48dMW9DzEtKKA6en8b3l6GzrLVP1ddQx8p" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy/J6ezy4h6U" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        function selectOption(option) {
-            document.getElementById('opcion').value = option;
-
-            // Limpiar el contenido del resultado cuando se cambia la opción
-            const resultadoContent = document.getElementById('resultado-content');
-            resultadoContent.innerHTML = '';
-
-            const resultadoPlaceholder = document.getElementById('resultado-placeholder');
-            resultadoPlaceholder.style.display = 'none';
-
-            const buttons = document.querySelectorAll('button[id^="btn-"]');
-            buttons.forEach(btn => {
-                btn.classList.remove('active');
-            });
-            const selectedBtn = document.getElementById(`btn-${option}`);
-            selectedBtn.classList.add('active');
-        }
-    </script>
 </body>
 </html>
+
+
