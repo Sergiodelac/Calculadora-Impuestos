@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request
 from iva_calculador import calcular_iva
 from honorarios_calculador import calcular_honorarios
+from comisiones_calculador import calcular_comisiones
+
+
 
 app = Flask(__name__)
 
@@ -36,9 +39,17 @@ def calculadora_honorarios():
 
     return render_template('honorarios_calculador.html', resultado=resultado)
 
-@app.route('/calculadora_comisiones')
+@app.route('/calculadora_comisiones', methods=['GET', 'POST'])
 def calculadora_comisiones():
-    return render_template('comisiones_calculador.html')
+    resultado = None
+
+    if request.method == 'POST':
+        opcion = request.form.get('opcion')
+        valor = request.form.get('valor')
+        resultado = calcular_comisiones(opcion, valor)
+
+    return render_template('comisiones_calculador.html', resultado=resultado)
+
 
 @app.route('/calculadora_desperdicios')
 def calculadora_desperdicios():
