@@ -84,34 +84,33 @@
         <p id="resultado-content" style="display: none;"></p>
     {% endif %}
 </div>
+<div class="row mt-3">
+    <div class="col-12 text-center">
+        <button id="volverInicioBtn" class="btn btn-primary">Volver al Inicio</button>
+    </div>
+</div>
+</div>
+<script>
+         document.getElementById('volverInicioBtn').addEventListener('click', function() {
+            window.location.href = '{{ url_for('index') }}';
+        });
+    function selectOption(option) {
+        document.getElementById('opcion').value = option;
 
+        // Limpiar el contenido del resultado cuando se cambia la opción
+        const resultadoContainer = document.getElementById('resultado-container');
+        resultadoContainer.innerHTML = '';
 
-        <div class="row mt-3">
-            <div class="col-12 text-center">
-                <button id="volverInicioBtn" class="btn btn-primary">Volver al Inicio</button>
-            </div>
-            <script>
-                document.getElementById('volverInicioBtn').addEventListener('click', function() {
-                    window.location.href = '{{ url_for('index') }}';
-                });
-            
-                function selectOption(option) {
-                    document.getElementById('opcion').value = option;
-            
-                    // Limpiar el contenido del resultado cuando se cambia la opción
-                    const resultadoContent = document.getElementById('resultado-content');
-                    resultadoContent.innerHTML = '';
-            
-                    const resultadoPlaceholder = document.getElementById('resultado-placeholder');
-                    resultadoPlaceholder.style.display = 'none';
-            
-                    const buttons = document.querySelectorAll('button[id^="btn-"]');
-                    buttons.forEach(btn => {
-                        btn.classList.remove('active');
-                    });
-                    const selectedBtn = document.getElementById(`btn-${option}`);
-                    selectedBtn.classList.add('active');
-                }
-            </script>
+        const resultadoPlaceholder = document.getElementById('resultado-placeholder');
+        resultadoPlaceholder.style.display = 'none';
+
+        const buttons = document.querySelectorAll('button[id^="btn-"]');
+        buttons.forEach(btn => {
+            btn.classList.remove('active');
+        });
+        const selectedBtn = document.getElementById(`btn-${option}`);
+        selectedBtn.classList.add('active');
+    }
+</script>
             
         </div

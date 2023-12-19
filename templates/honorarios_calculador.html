@@ -71,49 +71,48 @@
             <button type="submit" class="btn btn-primary">Calcular</button>
         </form>
 
-        <!-- Contenedor del resultado -->
-        <div id="resultado-container" class="mt-4 p-3 border bg-light">
-            {% if resultado %}
-                <h2>Resultado:</h2>
-                <p>Honorarios: {{ resultado['Honorarios'] }}</p>
-                <p>IVA: {{ resultado['IVA'] }}</p>
-                <p>Retención ISR: {{ resultado['Retencion_ISR'] }}</p>
-                <p>Retención IVA: {{ resultado['Retencion_IVA'] }}</p>
-                <p>Total a Pagar: {{ resultado['Total_Pagar'] }}</p>
-            {% else %}
-                <h2 id="resultado-placeholder" style="display: none;">Resultado:</h2>
-                <p id="resultado-content" style="display: none;"></p>
-            {% endif %}
-        </div>
+ <!-- Contenedor del resultado -->
+<div id="resultado-container" class="mt-4 p-3 border bg-light">
+    {% if resultado %}
+        <h2>Resultado:</h2>
+        <p>Honorarios: {{ resultado['Honorarios'] }}</p>
+        <p>IVA: {{ resultado['IVA'] }}</p>
+        <p>Retención ISR: {{ resultado['Retencion_ISR'] }}</p>
+        <p>Retención IVA: {{ resultado['Retencion_IVA'] }}</p>
+        <p>Total a Pagar: {{ resultado['Total_Pagar'] }}</p>
+    {% else %}
+        <h2 id="resultado-placeholder" style="display: none;">Resultado:</h2>
+        <p id="resultado-content" style="display: none;"></p>
+    {% endif %}
+</div>
 
-        <div class="row mt-3">
-            <div class="col-12 text-center">
-                <button id="volverInicioBtn" class="btn btn-primary">Volver al Inicio</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-     document.getElementById('volverInicioBtn').addEventListener('click', function() {
+<script>
+ <script>
+         document.getElementById('volverInicioBtn').addEventListener('click', function() {
             window.location.href = '{{ url_for('index') }}';
         });
-        function selectOption(option) {
-            document.getElementById('opcion').value = option;
+    document.getElementById('volverInicioBtn').addEventListener('click', function() {
+        window.location.href = '{{ url_for('index') }}';
+    });
 
-            // Limpiar el contenido del resultado cuando se cambia la opción
-            const resultadoContent = document.getElementById('resultado-content');
-            resultadoContent.innerHTML = '';
+    function selectOption(option) {
+        document.getElementById('opcion').value = option;
 
-            const resultadoPlaceholder = document.getElementById('resultado-placeholder');
-            resultadoPlaceholder.style.display = 'none';
+        // Limpiar el contenido del resultado cuando se cambia la opción
+        const resultadoContainer = document.getElementById('resultado-container');
+        resultadoContainer.innerHTML = '';
 
-            const buttons = document.querySelectorAll('button[id^="btn-"]');
-            buttons.forEach(btn => {
-                btn.classList.remove('active');
-            });
-            const selectedBtn = document.getElementById(`btn-${option}`);
-            selectedBtn.classList.add('active');
-        }
-    </script>
+        const resultadoPlaceholder = document.getElementById('resultado-placeholder');
+        resultadoPlaceholder.style.display = 'none';
+
+        const buttons = document.querySelectorAll('button[id^="btn-"]');
+        buttons.forEach(btn => {
+            btn.classList.remove('active');
+        });
+        const selectedBtn = document.getElementById(`btn-${option}`);
+        selectedBtn.classList.add('active');
+    }
+</script>
+
 </body>
 </html>

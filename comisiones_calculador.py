@@ -12,7 +12,7 @@ def calcular_comisiones(opcion, valor):
         total_pagar_arrendador = round(monto_comision + iva - retencion_iva, 2)
     elif opcion == 'total':
         total_pagar_arrendador = valor
-        monto_comision = round(total_pagar_arrendador / (1 + 0.16), 2)  # Monto de Comisión
+        monto_comision = round(total_pagar_arrendador / 1.053334, 2)  # Monto de Comisión
         iva = round(monto_comision * 0.16, 2)  # IVA basado en el Monto de Comisión
         retencion_iva = round(iva * (2 / 3), 2)  # Retención IVA basada en el IVA
         # Se mantiene el Total a Pagar al Arrendador igual al valor ingresado
