@@ -85,9 +85,11 @@
         <p id="resultado-content" style="display: none;"></p>
     {% endif %}
 </div>
-
+<div class="row mt-3">
+    <div class="col-12 text-center">
+        <button id="volverInicioBtn" class="btn btn-primary">Volver al Inicio</button>
+    </div>
 <script>
- <script>
          document.getElementById('volverInicioBtn').addEventListener('click', function() {
             window.location.href = '{{ url_for('index') }}';
         });
