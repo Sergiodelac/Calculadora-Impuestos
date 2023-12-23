@@ -4,6 +4,7 @@ from honorarios_calculador import calcular_honorarios
 from comisiones_calculador import calcular_comisiones
 from desperdicios_calculador import calcular_desperdicios
 from fletes_calculador import calcular_fletes
+from renta_calculador import calcular_renta
 
 app = Flask(__name__)
 
@@ -74,8 +75,13 @@ def calculadora_fletes():
 
     return render_template('fletes_calculador.html', resultado=resultado)
     
-@app.route('/calculadora_renta')
+@app.route('/calculadora_renta', methods=['GET', 'POST'])
 def calculadora_renta():
+    if request.method == 'POST':
+        opcion = request.form['opcion']
+        valor = float(request.form['valor'])
+        resultado = calcular_renta(opcion, valor)
+        return render_template('renta_calculador.html', resultado=resultado)
     return render_template('renta_calculador.html')
 
 
