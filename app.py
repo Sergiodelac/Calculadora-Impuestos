@@ -3,7 +3,7 @@ from iva_calculador import calcular_iva
 from honorarios_calculador import calcular_honorarios
 from comisiones_calculador import calcular_comisiones
 from desperdicios_calculador import calcular_desperdicios
-
+from fletes_calculador import calcular_fletes
 
 app = Flask(__name__)
 
@@ -63,12 +63,17 @@ def calculadora_desperdicios():
 
     return render_template('desperdicios_calculador.html', resultado=resultado)
 
-
-
-@app.route('/calculadora_fletes')
+@app.route('/calculadora_fletes', methods=['GET', 'POST'])
 def calculadora_fletes():
-    return render_template('fletes_calculador.html')
+    resultado = None
+    if request.method == 'POST':
+        opcion = request.form.get('opcion')
+        valor = float(request.form.get('valor'))
 
+        resultado = calcular_fletes(opcion, valor)
+
+    return render_template('fletes_calculador.html', resultado=resultado)
+    
 @app.route('/calculadora_renta')
 def calculadora_renta():
     return render_template('renta_calculador.html')
