@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='custom.css') }}">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-light navbar-expand-lg" style="background-color: #e3f2fd;">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -54,10 +54,10 @@
             <div class="form-group">
                 <label for="opcion">Seleccione la opción:</label>
                 <div class="btn-group">
-                    <button type="button" onclick="selectOption('base')" id="btn-base" class="btn btn-secondary">Base</button>
-                    <button type="button" onclick="selectOption('total')" id="btn-total" class="btn btn-secondary">Total</button>
-                    <button type="button" onclick="selectOption('retencion')" id="btn-retencion" class="btn btn-secondary">Retención</button>
-                    <button type="button" onclick="selectOption('iva')" id="btn-iva" class="btn btn-secondary">IVA</button>
+                    <button type="button" onclick="selectOption('base')" id="btn-base" class="btn btn-outline-primary">Base</button>
+                    <button type="button" onclick="selectOption('total')" id="btn-total" class="btn btn-outline-primary">Total</button>
+                    <button type="button" onclick="selectOption('retencion')" id="btn-retencion" class="btn btn-outline-primary">Retención</button>
+                    <button type="button" onclick="selectOption('iva')" id="btn-iva" class="btn btn-outline-primary">IVA</button>
                 </div>
             </div>
 
@@ -113,4 +113,4 @@
     }
 </script>
             
-        </div
+    </div
