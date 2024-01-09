@@ -2,29 +2,13 @@
 body {
     font-family: 'Arial', sans-serif;
     background-color: #ffffff;
-    color: #333;
-    margin: 20px;
-    --s: 194px; /* control the size */
-    --c1: #f6edb3;
-    --c2: #acc4a3;
-  
-    --_l: #0000 calc(25% / 3), var(--c1) 0 25%, #0000 0;
-    --_g: conic-gradient(from 120deg at 50% 87.5%, var(--c1) 120deg, #0000 0);
-  
-    background: var(--_g), var(--_g) 0 calc(var(--s) / 2),
-      conic-gradient(from 180deg at 75%, var(--c2) 60deg, #0000 0),
-      conic-gradient(from 60deg at 75% 75%, var(--c1) 0 60deg, #0000 0),
-      linear-gradient(150deg, var(--_l)) 0 calc(var(--s) / 2),
-      conic-gradient(
-        at 25% 25%,
-        #0000 50%,
-        var(--c2) 0 240deg,
-        var(--c1) 0 300deg,
-        var(--c2) 0
-      ),
-      linear-gradient(-150deg, var(--_l)) #73c7b2 /* third color here */;
-    background-size: calc(0.866 * var(--s)) var(--s);
-}
+    width: 100%;
+  height: 100%;
+  --color: #E1E1E1;
+  background-color: #F3F3F3;
+  background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent),
+      linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent);
+  background-size: 55px 55px;
 
 h1 {
     color: #391dd8;
@@ -77,37 +61,89 @@ button:active {
       rgba(27, 133, 219, 0.5) 5px 10px 15px;
   }
   
-  .button:hover {
+.button:hover {
   letter-spacing: 3px;
   background-color: hsl(261deg 80% 48%);
   color: hsl(0, 0%, 100%);
   box-shadow: rgb(93 24 220) 0px 7px 29px 0px;
   }
 
-  .container {
+.container {
     width: 100%;
     height: 100%;
-    --s: 194px; /* control the size */
-    --c1: #f6edb3;
-    --c2: #acc4a3;
-  
-    --_l: #0000 calc(25% / 3), var(--c1) 0 25%, #0000 0;
-    --_g: conic-gradient(from 120deg at 50% 87.5%, var(--c1) 120deg, #0000 0);
-  
-    background: var(--_g), var(--_g) 0 calc(var(--s) / 2),
-      conic-gradient(from 180deg at 75%, var(--c2) 60deg, #0000 0),
-      conic-gradient(from 60deg at 75% 75%, var(--c1) 0 60deg, #0000 0),
-      linear-gradient(150deg, var(--_l)) 0 calc(var(--s) / 2),
-      conic-gradient(
-        at 25% 25%,
-        #0000 50%,
-        var(--c2) 0 240deg,
-        var(--c1) 0 300deg,
-        var(--c2) 0
-      ),
-      linear-gradient(-150deg, var(--_l)) #73c7b2 /* third color here */;
-    background-size: calc(0.866 * var(--s)) var(--s);
+    --color: #E1E1E1;
+    background-color: #F3F3F3;
+    background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent),
+        linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent);
+    background-size: 55px 55px;
+ }
+
+.card {
+    position: relative;
+    width: 200px;
+    height: 250px;
+    border-radius: 14px;
+    z-index: 1111;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+    ;
+  }
+
+  .card-section .card {
+    margin-bottom: 20px;
   }
   
-
+  .bg {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 190px;
+    height: 240px;
+    z-index: 2;
+    background: rgba(255, 255, 255, .95);
+    backdrop-filter: blur(24px);
+    border-radius: 10px;
+    overflow: hidden;
+    outline: 2px solid white;
+  }
   
+  .blob {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #ff0000;
+    opacity: 1;
+    filter: blur(12px);
+    animation: blob-bounce 5s infinite ease;
+  }
+  
+  @keyframes blob-bounce {
+    0% {
+      transform: translate(-100%, -100%) translate3d(0, 0, 0);
+    }
+  
+    25% {
+      transform: translate(-100%, -100%) translate3d(100%, 0, 0);
+    }
+  
+    50% {
+      transform: translate(-100%, -100%) translate3d(100%, 100%, 0);
+    }
+  
+    75% {
+      transform: translate(-100%, -100%) translate3d(0, 100%, 0);
+    }
+  
+    100% {
+      transform: translate(-100%, -100%) translate3d(0, 0, 0);
+    }
+  }
+}

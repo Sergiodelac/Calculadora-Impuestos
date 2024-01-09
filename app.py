@@ -84,6 +84,10 @@ def calculadora_renta():
         return render_template('renta_calculador.html', resultado=resultado)
     return render_template('renta_calculador.html')
 
+@app.route('/tutorial')
+def tutorial():
+ return render_template('tutorial.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
